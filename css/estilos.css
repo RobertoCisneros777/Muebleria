@@ -1,0 +1,272 @@
+/* =========================================
+   1. CONFIGURACIÓN GENERAL Y TIPOGRAFÍA
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: #fafafa; /* Fondo claro para todo el sitio */
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Permite que el footer siempre quede abajo */
+}
+
+/* =========================================
+   2. ENCABEZADO Y NAVEGACIÓN (MENÚS)
+   ========================================= */
+header, .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+header h1, .logo-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+}
+
+.logo-container p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Estilos para menús (tanto de listas <ul> como enlaces directos <a>) */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav a, .nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-size: 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    margin-left: 15px;
+}
+
+nav a:hover, .nav-links a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* =========================================
+   3. CONTENIDO PRINCIPAL Y SECCIONES
+   ========================================= */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+    flex: 1; /* Hace que el main ocupe el espacio disponible */
+}
+
+.main-container {
+    display: flex;
+    gap: 40px;
+}
+
+/* Estilo de cajas para las secciones en index, mision, vision y contacto */
+section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    border: 1px solid #eaeaea;
+}
+
+section h2 {
+    font-size: 22px;
+    color: #222;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+section p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+section ul {
+    margin-left: 20px;
+    color: #555;
+}
+
+section ul li {
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   4. PIE DE PÁGINA (FOOTER)
+   ========================================= */
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* =========================================
+   5. COMPONENTES DEL CATÁLOGO (Plantilla)
+   ========================================= */
+.sidebar {
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    display: block;
+}
+
+.sidebar li {
+    padding: 10px 0;
+    font-size: 15px;
+    color: #555;
+    cursor: pointer;
+    display: block;
+}
+
+.sidebar li.active {
+    font-weight: bold;
+    color: #000;
+}
+
+.sidebar li:hover {
+    color: #000;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.tarjeta-producto {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    border: 1px solid #eaeaea;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-5px);
+}
+
+.imagen-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.oferta-badge {
+    background-color: #000;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.tarjeta-producto h3 {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.precio {
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+}
+/* =========================================
+   6. DISEÑO RESPONSIVO (Media Queries para móviles y tablets)
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Encabezado y Navegación apilados */
+    header, .header {
+        flex-direction: column; /* Cambia de horizontal a vertical */
+        text-align: center;
+        padding: 15px 20px;
+    }
+
+    nav ul, .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 15px;
+        padding: 0;
+    }
+    
+    nav a, .nav-links a {
+        margin: 5px 10px; /* Separación equitativa en móviles */
+    }
+
+    /* 2. Catálogo: Menú lateral pasa a la parte superior */
+    .main-container {
+        flex-direction: column; /* Apila el menú y los productos */
+        gap: 20px;
+    }
+
+    .sidebar {
+        width: 100%; /* Ocupa todo el ancho */
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 15px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .sidebar li {
+        padding: 5px 15px;
+        background-color: #f0f0f0;
+        border-radius: 20px; /* Estilo de "botones" (píldoras) para los filtros en móvil */
+    }
+
+    /* 3. Ajuste de márgenes generales */
+    main {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    section {
+        padding: 20px; /* Reduce el padding interior en celulares */
+    }
+}
