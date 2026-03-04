@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Productos - Muebles Nova</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- AQUÍ -->
+    <link rel="stylesheet" href="../FORMULARIO-CSS/Formulario.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Gestión de Productos</h2>
+
+        <form>
+
+            <!-- Tipo de operación -->
+            <div class="form-group">
+                <label>Tipo de operación</label>
+                <select>
+                    <option value="alta">Alta (Agregar producto)</option>
+                    <option value="modificacion">Modificación</option>
+                    <option value="eliminacion">Eliminación</option>
+                </select>
+            </div>
+
+            <!-- Nombre del producto -->
+            <div class="form-group">
+                <label>Nombre del producto</label>
+                <input type="text" placeholder="Ej: Sofá moderno">
+            </div>
+
+            <!-- Categoría -->
+            <div class="form-group">
+                <label>Categoría</label>
+                <select>
+                    <option>Sala</option>
+                    <option>Comedor</option>
+                    <option>Oficina</option>
+                </select>
+            </div>
+
+            <!-- Precio -->
+            <div class="form-group">
+                <label>Precio</label>
+                <input type="number" placeholder="Ej: 5999">
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-group">
+                <label>Descripción</label>
+                <textarea placeholder="Describe el producto..."></textarea>
+            </div>
+
+            <!-- Botón -->
+            <button type="submit">Guardar Cambios</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
