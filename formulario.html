@@ -2,62 +2,81 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Gestión de Productos - Muebles Nova</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Gestión de Productos - Muebles Nova</title>
     
-    <link rel="stylesheet" href="../FORMULARIO-CSS/Formulario.css">
+    <link rel="stylesheet" href="https://julian12pm.github.io/FORMULARIO-CSS/Formulario.css">
 </head>
 <body>
 
-    <div class="form-container">
-        <h2>Gestión de Productos</h2>
+    <header>
+        <h1>Administración de Productos</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Volver al Inicio</a></li>
+                <li><a href="catalogo.html">Ir al Catálogo</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <form>
+    <main>
+        <div class="form-container">
+            <h2>Gestión de Productos</h2>
 
-            
-            <div class="form-group">
-                <label>Tipo de operación</label>
-                <select>
-                    <option value="alta">Alta (Agregar producto)</option>
-                    <option value="modificacion">Modificación</option>
-                    <option value="eliminacion">Eliminación</option>
-                </select>
-            </div>
+            <form>
+                <div class="form-group">
+                    <label>Tipo de operación</label>
+                    <select>
+                        <option value="alta">Alta (Agregar producto)</option>
+                        <option value="modificacion">Modificación</option>
+                        <option value="eliminacion">Eliminación</option>
+                    </select>
+                </div>
 
-            
-            <div class="form-group">
-                <label>Nombre del producto</label>
-                <input type="text" placeholder="Ej: Sofá Rojo">
-            </div>
+                <div class="form-group">
+                    <label>Nombre del producto</label>
+                    <input type="text" placeholder="Ej: Sofá Rojo">
+                </div>
 
-            
-            <div class="form-group">
-                <label>Categoría</label>
-                <select>
-                    <option>Sala</option>
-                    <option>Comedor</option>
-                    <option>Oficina</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label>Categoría</label>
+                    <select>
+                        <option>Sala</option>
+                        <option>Comedor</option>
+                        <option>Oficina</option>
+                    </select>
+                </div>
 
-            
-            <div class="form-group">
-                <label>Precio</label>
-                <input type="number" placeholder="Ej: 10,000">
-            </div>
+                <div class="form-group">
+                    <label>Precio</label>
+                    <input type="number" placeholder="Ej: 10,000">
+                </div>
 
-            
-            <div class="form-group">
-                <label>Descripción</label>
-                <textarea placeholder="Describe el producto..."></textarea>
-            </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea placeholder="Describe el producto..."></textarea>
+                </div>
 
-            
-            <button type="submit">Guardar Cambios</button>
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </main>
 
-        </form>
-    </div>
+    <footer>
+        <p>&copy; 2024 Muebles Nova. All rights reserved</p>
+        
+        <p>
+            <a href="https://validator.w3.org/nu/?doc=https://robertocisneros777.github.io/Muebleria/formulario.html">
+                <img src="https://www.w3.org/Icons/valid-html401" alt="Valid HTML!" height="31" width="88">
+            </a>
+        </p>
+        
+        <p>
+            <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://julian12pm.github.io/FORMULARIO-CSS/Formulario.css">
+                <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss" alt="¡CSS Válido!">
+            </a>
+        </p>
+    </footer>
 
 </body>
 </html>
