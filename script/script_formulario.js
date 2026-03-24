@@ -19,15 +19,15 @@ createApp({
             this.errores = {};
             this.exito = false;
 
-            if (!this.form.nombre) {
+            if (!this.form.nombre || this.form.nombre.length < 4) {
                 this.errores.nombre = true;
             }
 
-            if (!this.form.precio || this.form.precio <= 0) {
+            if (!this.form.precio || parseFloat(this.form.precio) <= 0) {
                 this.errores.precio = true;
             }
 
-            if (!this.form.descripcion) {
+            if (!this.form.descripcion || this.form.descripcion.length < 10) {
                 this.errores.descripcion = true;
             }
 

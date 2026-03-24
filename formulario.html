@@ -42,12 +42,14 @@
                 </div>
 
                 <div class="form-group mb-3">
-                    <label>Nombre del producto</label>
                     <input type="text" class="form-control"
-                        placeholder="Ej: Sofá Rojo"
-                        v-model="form.nombre"
-                        :class="{'is-invalid': errores.nombre, 'is-valid': form.nombre}">
-                    <div class="invalid-feedback">Campo obligatorio</div>
+                    placeholder="Ej: Sofá Rojo"
+                    v-model="form.nombre"
+                    :class="{
+                        'is-invalid': errores.nombre, 
+                        'is-valid': form.nombre.length >= 4 && !errores.nombre
+                    }">
+                <div class="invalid-feedback">El nombre debe tener al menos 4 caracteres</div>
                 </div>
 
                 <div class="form-group mb-3">
@@ -63,10 +65,13 @@
                 <div class="form-group mb-3">
                     <label>Precio</label>
                     <input type="number" class="form-control"
-                        placeholder="Ej: 10000"
-                        v-model="form.precio"
-                        :class="{'is-invalid': errores.precio, 'is-valid': form.precio}">
-                    <div class="invalid-feedback">Solo números válidos</div>
+                    placeholder="Ej: 10000"
+                    v-model="form.precio"
+                    :class="{
+                        'is-invalid': errores.precio, 
+                        'is-valid': form.precio > 0 && !errores.precio
+                    }">
+                <div class="invalid-feedback">El precio debe ser un número positivo</div>
                 </div>
 
                 <div class="form-group mb-3">
