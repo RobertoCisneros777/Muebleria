@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - Muebles Nova</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,6 +16,7 @@
             <p>Aquí está lo mejor</p>
         </div>
         <nav class="nav-links">
+            <a href="index.html">Inicio</a>
             <a href="mision.html">Mision</a>
             <a href="vision.html">Vision</a>
             <a href="contacto.html">Contacto</a>
@@ -22,7 +24,6 @@
     </header>
 
     <main class="main-container">
-
         <aside class="sidebar">
             <ul>
                 <li class="active">Todos los productos</li>
@@ -32,34 +33,41 @@
             </ul>
         </aside>
 
-<div class="grid-productos">
-            
-            <article class="tarjeta-producto">
-                <div class="imagen-placeholder">
-                    <span class="oferta-badge">Oferta</span>
+        <div id="app" class="row w-100">
+            <div v-if="alertaVisible"
+                class="alert alert-success position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg d-flex align-items-center"
+                style="z-index: 2000; min-width: 350px; border-radius: 12px;" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-check-circle-fill me-3" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                </svg>
+                <div>{{ mensajeAlerta }}</div>
+            </div>
+            <div class="row w-100">
+                <div class="col-md-6 col-lg-4 mb-4 animacion-entrada" v-for="(producto, index) in productos"
+                    :key="producto.id" :style="{ 'animation-delay': (index * 0.1) + 's' }">
+
+                    <article class="card h-100 border-0 shadow-sm overflow-hidden tarjeta-mueble">
+                        <div class="imagen-contenedor position-relative">
+                            <img :src="producto.img" :alt="producto.nombre">
+
+                            <span v-if="producto.enOferta"
+                                class="badge bg-dark position-absolute top-0 start-0 m-3 shadow">
+                                Oferta
+                            </span>
+                        </div>
+
+                        <div class="card-body text-center d-flex flex-column">
+                            <h2 class="card-title h5 text-dark mb-2 fw-bold">{{ producto.nombre }}</h2>
+                            <p class="precio mb-3">${{ producto.precio.toLocaleString('es-MX') }}</p>
+                            <button @click="agregarAlCarrito(producto)" class="btn btn-dark w-100 rounded-pill mt-auto">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </article>
                 </div>
-                <h2>Mesa de centro Quetzal</h2>
-                <p class="precio">$11,490.00</p>
-            </article>
-
-            <article class="tarjeta-producto">
-                <div class="imagen-placeholder"></div>
-                <h2>Sofá Selena Amarillo</h2>
-                <p class="precio">$34,790.00</p>
-            </article>
-
-            <article class="tarjeta-producto">
-                <div class="imagen-placeholder"></div>
-                <h2>Mesa de Comedor Orleans</h2>
-                <p class="precio">$17,790.00</p>
-            </article>
-
-            <article class="tarjeta-producto">
-                <div class="imagen-placeholder"></div>
-                <h2>Silla Tulip</h2>
-                <p class="precio">$6,750.00</p>
-            </article>
-
+            </div>
         </div>
     </main>
     <footer>
@@ -74,11 +82,13 @@
         <p>
             <a
                 href="https://jigsaw.w3.org/css-validator/validator?uri=https://robertocisneros777.github.io/Muebleria/css/estilos.css">
-                <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss"
+                <img style="border: 0; width: 88px; height: 31px" src="https://jigsaw.w3.org/css-validator/images/vcss"
                     alt="¡CSS Válido!">
             </a>
         </p>
     </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script/script_catalogo.js"></script>
 </body>
 
 </html>
