@@ -4,29 +4,68 @@ const app = Vue.createApp({
             alertaVisible: false,
             mensajeAlerta: '',
             categoriaSeleccionada: 'Todos los productos',
-            productos: [
-                { id: 1, nombre: 'Mesa de centro Quetzal', precio: 11490.00, enOferta: true, img: 'img/mesa_centro_quetzal.jpg', categoria: 'Salas' },
-                { id: 2, nombre: 'Sofá Selena Amarillo', precio: 34790.00, enOferta: false, img: 'img/sofa_selena_amarillo.jpg', categoria: 'Salas' },
-                { id: 3, nombre: 'Mesa de Comedor Orleans', precio: 17790.00, enOferta: false, img: 'img/mesa_comedor_orleans.jpg', categoria: 'Comedores' },
-                { id: 4, nombre: 'Silla Tulip', precio: 6750.00, enOferta: false, img: 'img/silla_tullip.jpg', categoria: 'Comedores' },
-                { id: 5, nombre: 'Escritorio Celta', precio: 8900.00, enOferta: true, img: 'img/escritorio_celta.jpg', categoria: 'Oficina' },
-                { id: 6, nombre: 'Librero Bourbon', precio: 5400.00, enOferta: false, img: 'img/librero_bourbon.jpg', categoria: 'Oficina' }
-            ]
+            productos: []
         };
+    },
+    mounted() {
+        this.cargarProductos();
     },
     computed: {
         productosFiltrados() {
             if (this.categoriaSeleccionada === 'Todos los productos') {
                 return this.productos;
             }
-            return this.productos.filter(producto => producto.categoria === this.categoriaSeleccionada);
+            // Filtro flexible que ignora mayúsculas y espacios
+            const catSelec = this.categoriaSeleccionada.toLowerCase().trim();
+            return this.productos.filter(producto => {
+                if (!producto.categoria) return false;
+                return producto.categoria.toLowerCase().trim() === catSelec;
+            });
         }
     },
     methods: {
+        async cargarProductos() {
+            console.log('Iniciando carga de productos...');
+            try {
+                const response = await fetch('php/api/get_productos.php');
+                const data = await response.json();
+                console.log('Datos recibidos:', data);
+                
+                if (data.error) {
+                    alert('Error del servidor: ' + data.message);
+                } else {
+                    this.productos = data;
+                    if (this.productos.length === 0) {
+                        console.warn('La base de datos devolvió 0 productos.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error al cargar productos:', error);
+                alert('No se pudo conectar con la API de productos. Revisa la consola (F12).');
+            }
+        },
         filtrarPorCategoria(categoria) {
             this.categoriaSeleccionada = categoria;
         },
         agregarAlCarrito(producto) {
+            let carrito = JSON.parse(localStorage.getItem('carritoMuebles')) || [];
+            let itemExistente = carrito.find(item => item.id === producto.id);
+            
+            if (itemExistente) {
+                itemExistente.cantidad++;
+            } else {
+                carrito.push({
+                    id: producto.id,
+                    nombre: producto.nombre,
+                    precio: producto.precio,
+                    img: producto.img,
+                    cantidad: 1
+                });
+            }
+            
+            localStorage.setItem('carritoMuebles', JSON.stringify(carrito));
+            window.dispatchEvent(new Event('carritoActualizado'));
+
             this.mensajeAlerta = `¡Se agregó "${producto.nombre}" al carrito!`;
             this.alertaVisible = true;
             setTimeout(() => {
