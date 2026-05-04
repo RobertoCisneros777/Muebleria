@@ -10,30 +10,19 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="logo-container">
-            <h1>Muebles Nova</h1>
-            <p>Aquí está lo mejor</p>
-        </div>
-        <nav class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="mision.html">Mision</a>
-            <a href="vision.html">Vision</a>
-            <a href="contacto.html">Contacto</a>
-        </nav>
-    </header>
+    <header></header>
 
     <main class="main-container">
-        <aside class="sidebar">
-            <ul>
-                <li class="active">Todos los productos</li>
-                <li>Oficina</li>
-                <li>Salas</li>
-                <li>Comedores</li>
-            </ul>
-        </aside>
+        <div id="app" class="d-flex gap-4 w-100">
+            <aside class="sidebar">
+                <ul>
+                    <li :class="{ active: categoriaSeleccionada === 'Todos los productos' }" @click="filtrarPorCategoria('Todos los productos')">Todos los productos</li>
+                    <li :class="{ active: categoriaSeleccionada === 'Oficina' }" @click="filtrarPorCategoria('Oficina')">Oficina</li>
+                    <li :class="{ active: categoriaSeleccionada === 'Salas' }" @click="filtrarPorCategoria('Salas')">Salas</li>
+                    <li :class="{ active: categoriaSeleccionada === 'Comedores' }" @click="filtrarPorCategoria('Comedores')">Comedores</li>
+                </ul>
+            </aside>
 
-        <div id="app" class="row w-100">
             <div v-if="alertaVisible"
                 class="alert alert-success position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg d-flex align-items-center"
                 style="z-index: 2000; min-width: 350px; border-radius: 12px;" role="alert">
@@ -45,7 +34,7 @@
                 <div>{{ mensajeAlerta }}</div>
             </div>
             <div class="row w-100">
-                <div class="col-md-6 col-lg-4 mb-4 animacion-entrada" v-for="(producto, index) in productos"
+                <div class="col-md-6 col-lg-4 mb-4 animacion-entrada" v-for="(producto, index) in productosFiltrados"
                     :key="producto.id" :style="{ 'animation-delay': (index * 0.1) + 's' }">
 
                     <article class="card h-100 border-0 shadow-sm overflow-hidden tarjeta-mueble">
@@ -70,24 +59,9 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Muebles Nova. All rights reserved</p>
-
-        <p>
-            <a href="https://validator.w3.org/nu/?doc=https://robertocisneros777.github.io/Muebleria/catalogo.html">
-                <img src="https://www.w3.org/Icons/valid-html401" alt="Valid HTML!" height="31" width="88">
-            </a>
-        </p>
-
-        <p>
-            <a
-                href="https://jigsaw.w3.org/css-validator/validator?uri=https://robertocisneros777.github.io/Muebleria/css/estilos.css">
-                <img style="border: 0; width: 88px; height: 31px" src="https://jigsaw.w3.org/css-validator/images/vcss"
-                    alt="¡CSS Válido!">
-            </a>
-        </p>
-    </footer>
+    <footer></footer>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script/shared.js"></script>
     <script src="script/script_catalogo.js"></script>
 </body>
 
