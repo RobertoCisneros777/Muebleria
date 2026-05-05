@@ -120,9 +120,9 @@ async function crearHeader() {
         </nav>
 
         <!-- Offcanvas del Carrito -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel">
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasCarritoLabel" role="dialog">
             <div class="offcanvas-header border-bottom">
-                <h5 class="offcanvas-title fw-bold" id="offcanvasCarritoLabel">Mi Carrito</h5>
+                <h2 class="offcanvas-title fw-bold h5 mb-0" id="offcanvasCarritoLabel">Mi Carrito</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body d-flex flex-column" id="carrito-body">
