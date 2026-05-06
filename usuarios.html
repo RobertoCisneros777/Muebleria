@@ -28,7 +28,16 @@
                 </div>
                 <div class="mb-3" v-if="form.operacion !== 'Alta'">
                     <label>ID Usuario</label>
-                    <input type="number" class="form-control" v-model="form.id_usuario">
+                    <div class="d-flex gap-2">
+                        <input type="number" class="form-control" v-model="form.id_usuario">
+                        <button type="button" class="btn btn-outline-primary" 
+                            v-if="form.operacion === 'Modificación'" 
+                            @click="buscarUsuario" 
+                            :disabled="cargandoUsuario">
+                            {{ cargandoUsuario ? 'Buscando...' : 'Buscar' }}
+                        </button>
+                    </div>
+                    <div class="text-success small mt-1" v-if="datosOriginales && form.operacion === 'Modificación'">✓ Usuario cargado — modifica los campos que necesites</div>
                 </div>
                 <div v-if="form.operacion !== 'Eliminación'">
                     <div class="mb-3">
@@ -61,7 +70,7 @@
 
         <!-- Alerta Flotante Estilo Catálogo -->
         <div v-if="alertaVisible"
-            class="alert alert-success position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg d-flex align-items-center"
+            :class="'alert ' + alertaClase + ' position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg d-flex align-items-center'"
             style="z-index: 2000; min-width: 350px; border-radius: 12px;" role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                 class="bi bi-check-circle-fill me-3" viewBox="0 0 16 16">
