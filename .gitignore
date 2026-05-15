@@ -1,1 +1,60 @@
+.DS_Store
+Thumbs.db
+
+# IDEs / editors
 .vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Node / frontend
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Composer / PHP dependencies
+/vendor/
+
+# Build / distribution
+/dist/
+/build/
+/public/build/
+
+# Environment / secrets
+.env
+.env.*
+.env.local
+.env.production
+backend/config/conexion.php
+credentials.json
+*.pem
+*.key
+
+# Logs and runtime files
+*.log
+logs/
+php_errorlog
+storage/
+tmp/
+cache/
+
+# OS/editor swap files
+*~
+*.swp
+*.tmp
+
+# Database dumps
+*.sql
+*.sqlite
+*.sqlite3
+
+# AWS / infra artifacts
+.terraform/
+.terraform.tfstate
+.terraform.tfstate.backup
+serverless-state.json
+.aws-sam/
+
+# Misc
+.vagrant/
+coverage/
