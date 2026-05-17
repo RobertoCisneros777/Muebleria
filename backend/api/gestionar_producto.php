@@ -24,9 +24,9 @@ try {
 
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
         $nombreArchivo = time() . '_' . basename($_FILES['imagen']['name']);
-        $rutaDestino = "../../../public/assets/img/" . $nombreArchivo;
-        if (!is_dir("../../../public/assets/img/")) {
-            mkdir("../../../public/assets/img/", 0777, true);
+        $rutaDestino = "../../public/assets/img/" . $nombreArchivo;
+        if (!is_dir("../../public/assets/img/")) {
+            mkdir("../../public/assets/img/", 0777, true);
         }
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
             $imagen_url = "assets/img/" . $nombreArchivo;
