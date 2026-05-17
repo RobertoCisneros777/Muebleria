@@ -36,7 +36,7 @@ try {
     switch ($operacion) {
         case 'Alta':
             if (empty($imagen_url)) $imagen_url = 'assets/img/default.jpg';
-            $query = "INSERT INTO muebles (nombre, categoria, precio, descripcion, imagen_url) VALUES (:nombre, :categoria, :precio, :descripcion, :imagen_url)";
+            $query = "INSERT INTO muebles (nombre, categoria, precio, descripcion, imagen_url, en_oferta) VALUES (:nombre, :categoria, :precio, :descripcion, :imagen_url, 0)";
             $stmt = $conn->prepare($query);
             break;
         case 'Modificación':
