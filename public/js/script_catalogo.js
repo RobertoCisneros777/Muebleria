@@ -1,4 +1,5 @@
 const app = Vue.createApp({
+    template: '#app-template',
     data() {
         return {
             alertaVisible: false,

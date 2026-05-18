@@ -10,13 +10,10 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        [v-cloak] { display: none !important; }
     </style>
 </head>
 
 <body>
-
-<div id="app" v-cloak>
 
     <header>
         <h1>Administración de Productos</h1>
@@ -28,9 +25,11 @@
         </nav>
     </header>
 
-    <main>
+    <main id="app"></main>
+
+    <script type="text/x-template" id="app-template">
         <div class="form-container">
-            <h2>Gestión de Productos</h2>
+            <h1>Gestión de Productos</h1>
 
             <form @submit.prevent="validarFormulario">
 
@@ -125,12 +124,10 @@
             </svg>
             <div>{{ mensajeAlerta }}</div>
         </div>
-    </main>
+    </script>
 
     <footer>
     </footer>
-
-</div>
 
 <script src="https://unpkg.com/vue@3"></script>
 <script src="js/shared.js"></script>

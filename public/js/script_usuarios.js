@@ -1,5 +1,6 @@
 const { createApp } = Vue;
 createApp({
+    template: '#app-template',
     data() {
         return {
             form: { operacion: '', id_usuario: '', nombre: '', apellido: '', email: '', password: '', rol: 'cliente' },

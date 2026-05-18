@@ -1,6 +1,7 @@
 const { createApp } = Vue;
 
 createApp({
+    template: '#app-template',
     data() {
         return {
             form: {
