@@ -100,20 +100,20 @@ async function crearHeader() {
 
     const esCualquierPaginaAdmin = esPaginaAdmin || esPaginaUsuarios;
 
-    const logoStyle = esCualquierPaginaAdmin 
-        ? 'text-align: center; width: 100%; margin-bottom: 15px;' 
-        : 'text-align: left;';
+    const logoClass = esCualquierPaginaAdmin 
+        ? 'text-center w-100 mb-3' 
+        : 'text-center text-md-start mb-3 mb-md-0';
     
-    const navStyle = esCualquierPaginaAdmin 
-        ? 'width: 100%; display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;' 
-        : 'margin-left: auto; display: flex; align-items: center;';
+    const navClass = esCualquierPaginaAdmin 
+        ? 'w-100 d-flex justify-content-center align-items-center gap-3 flex-wrap' 
+        : 'ms-md-auto d-flex align-items-center justify-content-center flex-wrap gap-3';
 
     return `
-        <div class="logo-container" style="${logoStyle}">
+        <div class="logo-container ${logoClass}">
             <h1 style="margin:0; font-size: 2rem;">Muebles Nova</h1>
             <p style="margin:0; font-size: 0.9rem; color: #888;">Aquí está lo mejor</p>
         </div>
-        <nav class="nav-links" style="${navStyle}">
+        <nav class="nav-links ${navClass}">
             ${navLinks}
             ${cartSection}
             ${authSection}
@@ -154,11 +154,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         headerElement.classList.add('header');
         
         if (esPaginaAdmin) {
-            headerElement.style.flexDirection = 'column';
-            headerElement.style.textAlign = 'center';
+            headerElement.className = 'header d-flex flex-column align-items-center bg-white p-3 p-md-4 border-bottom';
         } else {
-            headerElement.style.flexDirection = 'row';
-            headerElement.style.justifyContent = 'space-between';
+            headerElement.className = 'header d-flex flex-column flex-md-row align-items-center justify-content-between bg-white p-3 p-md-4 border-bottom gap-3';
         }
         
         const headerHTML = await crearHeader();

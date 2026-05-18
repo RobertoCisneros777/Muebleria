@@ -16,7 +16,7 @@
     <header></header>
 
     <main class="main-container">
-        <div id="app" class="d-flex gap-4 w-100" v-cloak>
+        <div id="app" class="d-flex flex-column flex-md-row gap-4 w-100" v-cloak>
             <aside class="sidebar">
                 <ul>
                     <li :class="{ active: categoriaSeleccionada === 'Todos los productos' }" @click="filtrarPorCategoria('Todos los productos')">Todos los productos</li>
