@@ -133,13 +133,16 @@ async function crearHeader() {
 }
 
 function crearFooter() {
+    const currentUrl = encodeURIComponent(window.location.href);
+    const cssUrl = encodeURIComponent(window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/css/estilos.css'));
+    
     return `
         <p>&copy; 2024 Muebles Nova. All rights reserved</p>
         <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 15px;">
-            <a href="https://validator.w3.org/nu/?doc=https://robertocisneros777.github.io/Muebleria/" style="display: inline-flex;">
+            <a href="https://validator.w3.org/nu/?doc=${currentUrl}" target="_blank" style="display: inline-flex;">
                 <img src="https://www.w3.org/Icons/valid-html401" alt="Valid HTML!" height="31" width="88">
             </a>
-            <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://robertocisneros777.github.io/Muebleria/css/estilos.css" style="display: inline-flex;">
+            <a href="https://jigsaw.w3.org/css-validator/validator?uri=${cssUrl}" target="_blank" style="display: inline-flex;">
                 <img src="https://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Válido!" height="31" width="88">
             </a>
         </div>
