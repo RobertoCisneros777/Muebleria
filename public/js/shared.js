@@ -134,7 +134,11 @@ async function crearHeader() {
 
 function crearFooter() {
     const currentUrl = encodeURIComponent(window.location.href);
-    const cssUrl = encodeURIComponent(window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/css/estilos.css'));
+    let cssFile = 'estilos.css';
+    if (window.location.pathname.includes('formulario.html')) {
+        cssFile = 'formulario.css';
+    }
+    const cssUrl = encodeURIComponent(window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/css/' + cssFile));
     
     return `
         <p>&copy; 2024 Muebles Nova. All rights reserved</p>
